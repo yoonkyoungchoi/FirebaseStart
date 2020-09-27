@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">파이어베이스 시작</string>
+    <string name="firebase_auth">파이어베이스 인증</string>
+    <string name="insert_auth">삽입 인증 솔루션</string>
+
+</resources>
