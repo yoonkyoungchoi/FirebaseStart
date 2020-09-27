@@ -18,6 +18,7 @@ import com.firebase.ui.auth.IdpResponse;
 import com.google.android.gms.tasks.OnCanceledListener;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -83,10 +84,18 @@ public class SignedInActivity extends AppCompatActivity implements View.OnClickL
                     providerList.append("Facebook");
                 }
                 else if(TwitterAuthProvider.PROVIDER_ID.equals(providerId)){
-
+                    providerList.append("Twitter");
+                }
+                else if(EmailAuthProvider.PROVIDER_ID.equals(providerId)){
+                    providerList.append("Email");
+                }
+                else{
+                    providerList.append(providerId);
                 }
             }
         }
+        TextView userenabled = (TextView)findViewById(R.id.user_enabled_providers);
+        userenabled.setText();
 
     }
 

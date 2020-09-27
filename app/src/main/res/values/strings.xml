@@ -1,6 +1,14 @@
 <resources>
     <string name="app_name">파이어베이스 시작</string>
     <string name="firebase_auth">파이어베이스 인증</string>
-    <string name="insert_auth">삽입 인증 솔루션</string>
+    <String name="firebase_readdb">파이어베이스 리얼타임디비</String>
+    <string name="insert_auth_solution">삽입 인증 솔루션</string>
+    <string name="android_image">안드로이드 그림</string>
+    <string name="auth">인증</string>
+    <string name="google">Google</string>
+    <string name="Facebook">Facebook</string>
+    <string name="Twitter">Twiiter</string>
+    <string name="email">Email</string>
+
 
 </resources>

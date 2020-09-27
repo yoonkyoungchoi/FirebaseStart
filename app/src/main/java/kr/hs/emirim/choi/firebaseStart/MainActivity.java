@@ -15,12 +15,18 @@ import com.google.firebase.analytics.FirebaseAnalytics;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     final  static String TAG = "파베Main";
+    private Button firebaseauthbtn = null;
+    private Button firebaserealtimedbbtn = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.d("파베:main", "파베어스 버튼 눌림!");
+        firebaseauthbtn = findViewById(R.id.firebaseauthbtn);
+        firebaserealtimedbbtn = findViewById(R.id.firebaserealtimedbbtn);
+        firebaseauthbtn.setOnClickListener(this);
+        firebaserealtimedbbtn.setOnClickListener(this);
         Button firebaseauthbtn = findViewById(R.id.firebaseauthbtn);
         firebaseauthbtn.setOnClickListener(this) ;
         Log.d("파베:main", "mainActiovity 버튼객체 참조 연결하고 리스너 등록");
@@ -36,7 +42,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent intent = new Intent(this, AuthActivity.class);
                 startActivity(intent);
                 break;
+            case R.id.firebaserealtimedbbtn:
+                Log.d(TAG, "파이어베이스 인증 버튼 눌림!");
+                intent = new Intent(this, MemoActivity2.class);
+                startActivity(intent);
+                break;
             default:
+                Log.d(TAG, "모르는 클릭?");
                 break;
         }
     }
