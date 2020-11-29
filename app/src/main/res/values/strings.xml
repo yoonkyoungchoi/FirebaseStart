@@ -10,4 +10,5 @@
     <string name="Twitter">Twiiter</string>
     <string name="email">Email</string>
     <string name="firebase_firestpre">파이어 베이스 스토리지</string>
+    <string name="cloudhosting">파이어베이스 클라우드 호스팅</string>
 </resources>

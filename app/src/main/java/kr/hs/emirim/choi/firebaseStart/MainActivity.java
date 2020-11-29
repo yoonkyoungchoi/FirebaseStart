@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import kr.hs.emirim.choi.firebaseStart.Hosting.HostingActivity;
 import kr.hs.emirim.choi.firebaseStart.firestore.FirestoreActivity;
 import kr.hs.emirim.choi.firebaseStart.realtimedb.MemoActivity;
 //import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
@@ -55,6 +56,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intent = new Intent(this, FirestoreActivity.class);
                 startActivity(intent);
                 break;
+
+            case R.id.firebasehostingbtn :
+                Log.d(TAG, "파이어베이스 클라우드 호스팅 버튼 눌림!");
+                intent = new Intent(this, HostingActivity.class);
             default:
                 Log.d(TAG, "모르는 클릭?");
                 break;

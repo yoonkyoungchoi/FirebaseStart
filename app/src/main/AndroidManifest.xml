@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".storage.MetaInfoActivity"></activity>
+        <activity android:name=".Hosting.HostingActivity"></activity>
+        <activity android:name=".Hosting" />
+        <activity android:name=".storage.MetaInfoActivity" />
         <activity android:name=".activity_storage" />
         <activity android:name=".Activity_Firestory" />
         <activity android:name=".realtimedb.MemoActivity" />

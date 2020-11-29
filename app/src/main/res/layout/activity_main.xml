@@ -41,7 +41,21 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/firebasehostingbtn"
+        app:layout_constraintVertical_bias="0.376" />
+
+    <Button
+        android:id="@+id/firebasehostingbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="500dp"
+        android:text="@string/cloudhosting"
+        app:layout_constraintBottom_toBottomOf="@id/firebaseauthbtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.6" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
