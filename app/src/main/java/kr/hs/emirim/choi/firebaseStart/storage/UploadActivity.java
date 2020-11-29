@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCanceledListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
@@ -34,26 +35,28 @@ import java.io.File;
 import kr.hs.emirim.choi.firebaseStart.R;
 
 public class UploadActivity extends AppCompatActivity implements View.OnClickListener {
-    private static final String TAG = "파베 TAG";
-    private final int REQUEST_CODE_SELECT_IMAGE = 1000;
+
+    private final int REQUEST_CODE_SELECT_IMAGE = 777;
     private String mImgPath = null;
     private String mImgTitle = null;
     private String mImgOrient = null;
+
+    private Button mButton = null;
     private ProgressBar mProgressBar = null;
     private ProgressBar mProgressBar2 = null;
-    private Button mButton = null;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload);
 
+        findViewById(R.id.upload_page_btn).setOnClickListener(this);
         mButton = findViewById(R.id.upload_page_btn);
         mButton.setOnClickListener(this);
-        mButton.setEnabled((true));
-        mProgressBar = findViewById(R.id.progress_bar);
-        mProgressBar.setVisibility(View.VISIBLE);
+        mButton.setEnabled(true);
+        mProgressBar = findViewById(R.id.progressBar);
+        mProgressBar.setVisibility(View.GONE);
+        mProgressBar2 = findViewById(R.id.progressBar2);
         getGallery();
 
     }
@@ -83,8 +86,7 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
                 MediaStore.Images.Media.TITLE,
                 MediaStore.Images.Media.ORIENTATION,
         };
-
-        Cursor cursor  = this.getContentResolver().query(uri, proj, null, null, null);
+        Cursor cursor = this.getContentResolver().query(uri, proj, null, null, null);
         cursor.moveToFirst();
 
         int column_data = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
@@ -94,6 +96,7 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
         mImgPath = cursor.getString(column_data);
         mImgTitle = cursor.getString(column_title);
         mImgOrient = cursor.getString(column_orientation);
+
     }
 
     private void getGallery() {
@@ -113,10 +116,9 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
         switch (v.getId()) {
             case R.id.upload_page_btn :
                 mProgressBar.setVisibility(View.VISIBLE);
+                mProgressBar2.setVisibility(View.VISIBLE);
                 mButton.setEnabled(false);
                 uploadFile(mImgPath);
-                break;
-            default:
                 break;
         }
     }
@@ -129,32 +131,45 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageReference = storage.getReference();
         UploadTask uploadTask = storageReference.child("storage/"
-                + file.getLastPathSegment()).putFile(file, metadata);
-        UploadTask.addOnProgress(new OnProgressListener<UploadTask.TaskSnapshot>(){
+                + file.getLastPathSegment()).putFile(file,metadata);
+
+        uploadTask.addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onProgress(@NonNull UploadTask.TaskSnapshot snapshot) {
                 double progress = (100.0 * snapshot.getBytesTransferred()) / snapshot.getTotalByteCount();
-                Toast.makeText(UploadActivity.this, "Upload is : " + progress + "% done" , Toast.LENGTH_SHORT).show();T).show();
+                mProgressBar2.setProgress((int)progress);
+                Toast.makeText(UploadActivity.this,"Upload is : "+progress + "% done", Toast.LENGTH_SHORT).show();
             }
         }).addOnPausedListener(new OnPausedListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onPaused(@NonNull UploadTask.TaskSnapshot snapshot) {
-                Log.d(TAG, "Upload is pauesd");
+                Log.d("파베","Upload is Paused");
                 mProgressBar.setVisibility(View.GONE);
+                mProgressBar2.setVisibility(View.GONE);
                 mButton.setEnabled(true);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-                Log.d(TAG, "Upload Exception!");
+                Log.d("파베","Upload Exception");
                 mProgressBar.setVisibility(View.GONE);
+                mProgressBar2.setVisibility(View.GONE);
+                mButton.setEnabled(true);
+            }
+        }).addOnCanceledListener(new OnCanceledListener() {
+            @Override
+            public void onCanceled() {
+                Log.d("파베","Upload is Canceled..");
+                mProgressBar.setVisibility(View.GONE);
+                mProgressBar2.setVisibility(View.GONE);
                 mButton.setEnabled(true);
             }
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Log.d(TAG, "업로드 성공!");
+                Log.d("파베","Upload is Success!");
                 mProgressBar.setVisibility(View.GONE);
+                mProgressBar2.setVisibility(View.GONE);
                 mButton.setEnabled(true);
             }
         });
