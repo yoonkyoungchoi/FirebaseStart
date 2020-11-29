@@ -11,8 +11,9 @@
         android:id="@+id/topimg"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/lion" />
@@ -34,10 +35,10 @@
         android:layout_height="51dp"
         android:layout_marginStart="25dp"
         android:layout_marginLeft="25dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="36dp"
         android:text="로그아웃"
         app:layout_constraintEnd_toStartOf="@+id/delete_account"
-        app:layout_constraintHorizontal_bias="0.185"
+        app:layout_constraintHorizontal_bias="0.202"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toptext" />
 
@@ -45,9 +46,9 @@
         android:id="@+id/delete_account"
         android:layout_width="126dp"
         android:layout_height="51dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginRight="40dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginRight="44dp"
         android:text="회원 탈퇴"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toptext" />
@@ -56,9 +57,9 @@
         android:id="@+id/userprofile"
         android:layout_width="114dp"
         android:layout_height="25dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
         android:text="사용자 프로필:"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,10 +70,10 @@
         android:layout_height="307dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.461"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/userprofile"
-        app:layout_constraintVertical_bias="0.407">
+        app:layout_constraintVertical_bias="0.252">
 
         <ImageView
             android:id="@+id/imageView3"

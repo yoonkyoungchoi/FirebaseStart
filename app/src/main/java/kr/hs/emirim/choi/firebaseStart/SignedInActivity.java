@@ -53,10 +53,6 @@ public class SignedInActivity extends AppCompatActivity implements View.OnClickL
         deleteuser.setOnClickListener(this);
     }
 
-    private void populateIdpToken() {
-
-    }
-
     private void populateProfile() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -95,8 +91,19 @@ public class SignedInActivity extends AppCompatActivity implements View.OnClickL
             }
         }
         TextView userenabled = (TextView)findViewById(R.id.user_enabled_providers);
-        userenabled.setText();
+        userenabled.setText(providerList);
 
+    }
+    private void populateIdpToken(){
+        String token = null;
+        if (mIdpRespones != null){
+            token = mIdpRespones.getIdpToken();
+        }
+        if (token == null){
+            findViewById(R.id.idp_token).setVisibility(View.GONE);
+        }else{
+            ((TextView)findViewById(R.id.idp_token)).setText(token);
+        }
     }
 
     @Override

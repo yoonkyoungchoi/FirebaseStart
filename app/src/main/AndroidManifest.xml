@@ -9,11 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MemoActivity2"></activity>
+        <activity android:name=".storage.MetaInfoActivity"></activity>
+        <activity android:name=".activity_storage" />
+        <activity android:name=".Activity_Firestory" />
+        <activity android:name=".realtimedb.MemoActivity" />
         <activity android:name=".SignedInActivity" />
         <activity android:name=".FirebaseUIActivity" />
         <activity android:name=".AuthActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" />
+        <activity android:name=".firestore.FirestoreActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

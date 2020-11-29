@@ -42,7 +42,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:layout_marginBottom="185dp"
-        android:text="@string/insert_auth"
+        android:text="파이어베이스 REALTIME MEMO"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
